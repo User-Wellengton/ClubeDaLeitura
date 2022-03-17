@@ -16,17 +16,23 @@ namespace ClubeDaLeitura.ConsoleApp
         public SubMenuAmigo amigosUtilizados;
         public SubMenuRevista revistaUtilizada;
 
+        DateTime hoje = DateTime.Now;
+
+
+
         public void MenuEmprestimo()
         {
 
-            
+
 
             while (true)
             {
-                
+
                 Console.WriteLine("SUBMENU CAIXA... ");
                 Console.WriteLine("Digite 1 para cadastrar um emprestimo:");
-                Console.WriteLine("Digite 2 para vizualizar emprestimos:");               
+                Console.WriteLine("Digite 2 para vizualizar emprestimos:");
+                Console.WriteLine("Digite 3 para vizualizar emprestimos mensais:");
+                Console.WriteLine("Digite 4 para vizualizar emprestimos diarios:");
                 Console.WriteLine("Digite 'S' para sair:");
                 opcaoEmprestimo = Console.ReadLine();
 
@@ -39,7 +45,17 @@ namespace ClubeDaLeitura.ConsoleApp
                 {
                     Console.Clear();
                     vizualizarEmprestimo();
-                }             
+                }
+                else if (opcaoEmprestimo == "3")
+                {
+                    Console.Clear();
+                    emprestimosMensal();
+                }
+                else if (opcaoEmprestimo == "4")
+                {
+                    Console.Clear();
+                    emprestimoDiario();
+                }
                 else if (opcaoEmprestimo == "s")
                 {
                     break;
@@ -62,17 +78,17 @@ namespace ClubeDaLeitura.ConsoleApp
             amigosUtilizados.vizualizarAmigos();
 
             Console.WriteLine("Informe o ID do amigo:");
-            int seletorAmigo = int.Parse(Console.ReadLine());   
+            int seletorAmigo = int.Parse(Console.ReadLine());
 
             ListaEmprestimo[contadorEmprestimo].quemEmprestou = amigosUtilizados.listaAmigo[seletorAmigo];
 
 
             revistaUtilizada.vizualizarRevista();
-           
+
 
             Console.WriteLine("Informe qual o ID da revista:");
             int seletorRevista = int.Parse(Console.ReadLine());
-         //                                                          objeto criado     array submenusrevista
+            //                                                          objeto criado     array submenusrevista
             ListaEmprestimo[contadorEmprestimo].revistaEmprestada = revistaUtilizada.listaRevista[seletorRevista];
 
 
@@ -103,12 +119,12 @@ namespace ClubeDaLeitura.ConsoleApp
 
         }
 
-        
+
 
         public void vizualizarEmprestimo()
         {
 
-            for (int i=0; i < contadorEmprestimo; i++)
+            for (int i = 0; i < contadorEmprestimo; i++)
             {
                 Console.WriteLine("Amigo .............: " + ListaEmprestimo[i].quemEmprestou.amigo);
                 Console.WriteLine("Resvista ..........: " + ListaEmprestimo[i].revistaEmprestada.tipoDeColecao);
@@ -119,7 +135,61 @@ namespace ClubeDaLeitura.ConsoleApp
 
         }
 
+        public void emprestimosMensal()
+        {
+            int contador = 0;
 
-       
+            Console.WriteLine("informa qual o mes para obter informações: (mm)");
+            int mes = int.Parse(Console.ReadLine());
+
+
+            while (contador > contadorEmprestimo)
+            {
+                if (ListaEmprestimo[contador].dataRetirada.Month == mes && ListaEmprestimo[contador].dataRetirada.Year == hoje.Year)
+                {
+                    Console.WriteLine("Amigo .............: " + ListaEmprestimo[contador].quemEmprestou.amigo);
+                    Console.WriteLine("Resvista ..........: " + ListaEmprestimo[contador].revistaEmprestada.tipoDeColecao);
+                    Console.WriteLine("Data emprestimo ...: " + ListaEmprestimo[contador].dataRetirada);
+                    Console.WriteLine("Data devolução ....: " + ListaEmprestimo[contador].dataDevolucao);
+
+
+                }
+                contador++;
+
+            }
+        }
+
+        public void emprestimoDiario()
+        {
+
+            int contador = 0;
+
+            Console.WriteLine("informa  o dia para obter informações: (dd)");
+            int dia = int.Parse(Console.ReadLine());
+
+
+            while (contador > contadorEmprestimo)
+            {
+
+
+                if (ListaEmprestimo[contador].dataRetirada.Day == dia && ListaEmprestimo[contador].dataRetirada.Month == hoje.Month
+                    && ListaEmprestimo[contador].dataRetirada.Year == hoje.Year)
+                {
+
+                    if (ListaEmprestimo[contador].aberto)
+                    {
+                        Console.WriteLine("Amigo .............: " + ListaEmprestimo[contador].quemEmprestou.amigo);
+                        Console.WriteLine("Resvista ..........: " + ListaEmprestimo[contador].revistaEmprestada.tipoDeColecao);
+                        Console.WriteLine("Data emprestimo ...: " + ListaEmprestimo[contador].dataRetirada);
+                        Console.WriteLine("Data devolução ....: " + ListaEmprestimo[contador].dataDevolucao);
+
+                    }
+                }
+                contador++;
+
+            }
+
+
+        }
     }
 }
