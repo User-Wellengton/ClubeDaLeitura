@@ -13,7 +13,7 @@ namespace ClubeDaLeitura.ConsoleApp
             subRevista.registroDaCaixa = subCaixa;
             subEmprestimo.amigosUtilizados = subAmigo;
             subEmprestimo.revistaUtilizada = subRevista;
-
+            SubMenuCategoria subCategoria = new SubMenuCategoria();
 
             string opcaoMenuPrincipal;
 
@@ -30,6 +30,7 @@ namespace ClubeDaLeitura.ConsoleApp
                 Console.WriteLine("Digite 2 para menu caixa.");
                 Console.WriteLine("Digite 3 para menu emprestimo.");
                 Console.WriteLine("Digite 4 para menu amigo.");
+                Console.WriteLine("Digite 5 para menu categoria.");
                 Console.WriteLine("Digite 'S' para sair do programa.");
                 opcaoMenuPrincipal = Console.ReadLine();
 
@@ -50,6 +51,10 @@ namespace ClubeDaLeitura.ConsoleApp
                 else if (opcaoMenuPrincipal == "4")
                 {
                     subAmigo.MenuAmigo();
+                }
+                else if (opcaoMenuPrincipal == "5")
+                {
+                    subCategoria.MenuCategoria();
                 }
                 else if (opcaoMenuPrincipal == "s")
                 {

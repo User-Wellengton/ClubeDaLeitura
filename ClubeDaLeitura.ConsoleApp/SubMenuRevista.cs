@@ -16,7 +16,7 @@ namespace ClubeDaLeitura.ConsoleApp
 
 
         public SubMenuCaixa registroDaCaixa;
-
+        
 
         public void MenuRevista()
         {
@@ -91,6 +91,13 @@ namespace ClubeDaLeitura.ConsoleApp
 
                 listaRevista[contadorRevista].caixaLivros = registroDaCaixa.listaCaixa[seletorDaCaixa];
 
+
+                Console.WriteLine("Informe a categoria da revista:");
+                listaRevista[contadorRevista].revistaCategoria = Console.ReadLine();
+
+
+
+
                 contadorRevista++;
             }
         }
@@ -107,12 +114,12 @@ namespace ClubeDaLeitura.ConsoleApp
             {
                 for (int i = 0; i < contadorRevista; i++)
                 {
-                    Console.WriteLine("ID ..................: " + i);
-                    Console.WriteLine("Coleção .............: " + listaRevista[i].tipoDeColecao);
-                    Console.WriteLine("Numero de edição ... : " + listaRevista[i].numeroEdicao);
-                    Console.WriteLine("Ano da Revista ......: " + listaRevista[i].anoRevista);
-                    Console.WriteLine("Esta na caixa .......: " + registroDaCaixa.listaCaixa[i].cor);
-
+                    Console.WriteLine("ID .....................: " + i);
+                    Console.WriteLine("Coleção ................: " + listaRevista[i].tipoDeColecao);
+                    Console.WriteLine("Numero de edição .......: " + listaRevista[i].numeroEdicao);
+                    Console.WriteLine("Ano da Revista .........: " + listaRevista[i].anoRevista);
+                    Console.WriteLine("Esta na caixa ..........: " + registroDaCaixa.listaCaixa[i].cor);
+                    Console.WriteLine("Categoria da Revista ...: " + listaRevista[i].revistaCategoria);
 
                 }
             }
