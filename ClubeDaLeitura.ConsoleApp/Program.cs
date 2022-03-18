@@ -6,6 +6,7 @@ namespace ClubeDaLeitura.ConsoleApp
     {
         static void Main(string[] args)
         {
+
             SubMenuAmigo subAmigo = new SubMenuAmigo();
             SubMenuCaixa subCaixa = new SubMenuCaixa();
             SubMenuEmprestimo subEmprestimo = new SubMenuEmprestimo();
