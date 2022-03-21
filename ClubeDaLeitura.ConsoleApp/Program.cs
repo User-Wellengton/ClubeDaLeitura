@@ -17,8 +17,6 @@ namespace ClubeDaLeitura.ConsoleApp
             SubMenuCategoria subCategoria = new SubMenuCategoria();
 
             string opcaoMenuPrincipal;
-
-
             
             while (true)
             {
